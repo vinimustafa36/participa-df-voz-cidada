@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Participa DF - Design System
+   Identidade visual institucional do Governo do Distrito Federal
+   Azul institucional, design limpo e acessível
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Cores principais - Azul #0664ab e Amarelo #f0e05b */
+    --primary: 204 92% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Amarelo vibrante */
+    --accent-yellow: 53 85% 65%;
+    --accent-yellow-foreground: 0 0% 15%;
+    
+    /* Azul claro para destaques */
+    --primary-light: 204 80% 95%;
+    
+    /* Gradiente de fundo - azul para amarelo */
+    --gradient-start: 204 70% 50%;
+    --gradient-mid: 180 60% 55%;
+    --gradient-end: 53 85% 65%;
+    
+    /* Fundos */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 20%;
+    
+    /* Cards e superfícies */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+    
+    /* Secundário - cinza suave */
+    --secondary: 210 25% 96%;
+    --secondary-foreground: 220 15% 30%;
+    
+    /* Mutado */
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 15% 45%;
+    
+    /* Acentos */
+    --accent: 53 85% 90%;
+    --accent-foreground: 204 92% 35%;
+    
+    /* Sucesso - verde institucional */
+    --success: 152 55% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Em andamento - amarelo */
+    --warning: 45 93% 50%;
+    --warning-foreground: 0 0% 10%;
+    
+    /* Informação */
+    --info: 200 80% 55%;
+    --info-foreground: 0 0% 100%;
+    
+    /* Destrutivo */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Bordas e inputs */
+    --border: 210 30% 90%;
+    --input: 210 30% 90%;
+    --ring: 204 92% 35%;
+    
+    --radius: 0.75rem;
+    
+    /* Sombras elegantes */
+    --shadow-soft: 0 4px 20px -4px hsl(204 92% 35% / 0.12);
+    --shadow-medium: 0 8px 30px -6px hsl(204 92% 35% / 0.18);
+    --shadow-strong: 0 12px 40px -8px hsl(204 92% 35% / 0.25);
+    
+    /* Sidebar (se necessário) */
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 204 92% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 53 85% 90%;
+    --sidebar-accent-foreground: 204 92% 35%;
+    --sidebar-border: 220 15% 92%;
+    --sidebar-ring: 204 92% 45%;
+    
+    /* Animações - transições mais suaves */
+    --transition-fast: 120ms;
+    --transition-normal: 200ms;
+    --transition-slow: 300ms;
+  }
+
+  .dark {
+    --primary: 210 100% 60%;
+    --primary-foreground: 220 15% 10%;
+    --primary-light: 215 50% 20%;
+    
+    --gradient-start: 220 20% 12%;
+    --gradient-end: 215 25% 8%;
+    
+    --background: 220 20% 10%;
+    --foreground: 210 20% 95%;
+    
+    --card: 220 20% 13%;
+    --card-foreground: 210 20% 95%;
+    
+    --popover: 220 20% 13%;
+    --popover-foreground: 210 20% 95%;
+    
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 20% 90%;
+    
+    --muted: 220 15% 20%;
+    --muted-foreground: 215 15% 60%;
+    
+    --accent: 215 50% 20%;
+    --accent-foreground: 210 100% 70%;
+    
+    --success: 152 50% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 45 90% 50%;
+    --warning-foreground: 0 0% 10%;
+    
+    --info: 200 80% 55%;
+    --info-foreground: 0 0% 100%;
+    
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 210 100% 60%;
+    
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-medium: 0 8px 30px -6px hsl(0 0% 0% / 0.4);
+    --shadow-strong: 0 12px 40px -8px hsl(0 0% 0% / 0.5);
+    
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 220 15% 10%;
+    --sidebar-accent: 215 50% 20%;
+    --sidebar-accent-foreground: 210 100% 70%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 210 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Foco visível para acessibilidade */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Skip link para navegação por teclado */
+  .skip-link {
+    @apply absolute -top-12 left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md;
+    @apply focus:top-4 transition-all;
+  }
+}
+
+/* Fundo minimalista azul e branco com onda suave */
+.app-background {
+  background: #ffffff;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: #0664ab;
+  clip-path: ellipse(85% 100% at 50% 0%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-background::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 58%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+  clip-path: ellipse(85% 100% at 50% 0%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animação de entrada inicial */
+@keyframes introReveal {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.app-intro {
+  animation: introReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@layer components {
+  /* Botão de ação principal grande */
+  .action-card {
+    @apply flex flex-col items-center justify-center gap-3 sm:gap-4 p-6 sm:p-8 rounded-2xl;
+    @apply bg-card border border-border/50;
+    @apply hover:border-primary/30 hover:bg-card;
+    @apply focus-visible:border-primary focus-visible:bg-card;
+    @apply transition-all duration-200 ease-out;
+    @apply cursor-pointer select-none;
+    @apply min-h-[160px] sm:min-h-[180px];
+    box-shadow: var(--shadow-soft);
+  }
+
+  .action-card:hover,
+  .action-card:focus-visible {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-4px);
+  }
+
+  .action-card:active {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .action-card-icon {
+    @apply w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full;
+    @apply bg-primary text-primary-foreground;
+    box-shadow: 0 4px 12px -2px hsl(var(--primary) / 0.3);
+  }
+
+  /* Container principal */
+  .main-container {
+    @apply min-h-screen flex flex-col;
+    @apply px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8;
+    @apply max-w-2xl mx-auto relative z-10;
+  }
+
+  /* Header institucional */
+  .header-institutional {
+    @apply text-center mb-8;
+  }
+
+  .header-title {
+    @apply text-2xl md:text-3xl font-bold text-primary mb-2;
+  }
+
+  .header-subtitle {
+    @apply text-base md:text-lg text-muted-foreground;
+    @apply leading-relaxed;
+  }
+
+  /* Card elegante - fundo branco sólido para contraste */
+  .elegant-card {
+    @apply bg-white rounded-2xl border border-slate-200 p-4 sm:p-6;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .elegant-card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .elegant-card-hover:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+  }
+
+  /* Stepper de progresso */
+  .progress-stepper {
+    @apply flex items-center justify-center gap-2 mb-8;
+  }
+
+  .progress-step {
+    @apply w-3 h-3 rounded-full bg-muted transition-all duration-300;
+  }
+
+  .progress-step.active {
+    @apply bg-primary w-8;
+  }
+
+  .progress-step.completed {
+    @apply bg-success;
+  }
+
+  /* Confirmação de sucesso */
+  .success-container {
+    @apply text-center py-6 sm:py-8;
+  }
+
+  .success-icon {
+    @apply w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full;
+    @apply bg-success text-success-foreground;
+    @apply flex items-center justify-center;
+    box-shadow: 0 8px 24px -4px hsl(var(--success) / 0.3);
+  }
+
+  .protocol-box {
+    @apply bg-white border border-primary/20 rounded-2xl p-4 sm:p-6 my-4 sm:my-6;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .protocol-number {
+    @apply text-xl sm:text-2xl md:text-3xl font-bold text-primary font-mono;
+    @apply tracking-wider;
+  }
+
+  /* Timeline visual */
+  .timeline {
+    @apply relative;
+  }
+
+  .timeline::before {
+    content: '';
+    @apply absolute left-5 top-0 bottom-0 w-0.5 bg-border;
+  }
+
+  .timeline-item {
+    @apply relative pl-14 pb-8 last:pb-0;
+  }
+
+  .timeline-icon {
+    @apply absolute left-0 w-10 h-10 rounded-full flex items-center justify-center;
+    @apply border-4 border-background transition-all duration-300;
+  }
+
+  .timeline-icon.completed {
+    @apply bg-success text-success-foreground;
+  }
+
+  .timeline-icon.current {
+    @apply bg-primary text-primary-foreground;
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  .timeline-icon.pending {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .timeline-content {
+    @apply bg-card rounded-xl p-4 border border-border/50;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Info card institucional - fundo branco sólido para contraste */
+  .info-card {
+    @apply flex items-start gap-4 p-5 bg-white rounded-2xl border border-primary/20;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .info-card-icon {
+    @apply w-12 h-12 rounded-xl bg-primary flex items-center justify-center flex-shrink-0;
+    box-shadow: 0 4px 12px -2px hsl(var(--primary) / 0.25);
+  }
+
+  /* Input elegante */
+  .input-elegant {
+    @apply bg-white border border-border rounded-xl px-4 py-3;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/20;
+    @apply transition-all duration-200 text-foreground;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Textos com bom contraste */
+  .text-contrast {
+    @apply text-slate-700;
+  }
+
+  .text-contrast-muted {
+    @apply text-slate-600;
+  }
+}
+
+/* Animação de entrada suave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* Animação de pulso para status atual */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px hsl(var(--primary) / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+  }
+}
+
+/* Animação de pulso suave para feedback */
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+/* Animação de check para sucesso */
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-checkmark {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: checkmark 0.5s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Animação de shimmer para loading */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, 
+    hsl(var(--muted)) 0%, 
+    hsl(var(--background)) 50%, 
+    hsl(var(--muted)) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Garantir bom contraste e legibilidade */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+a[href*="lovable.dev"], 
+iframe[src*="lovable.dev"],
+div[style*="Edit with Lovable"],
+.lovable-badge {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
